@@ -1,11 +1,13 @@
 # Running Kubernetes-Mesos In Docker
 
 ## Building
-To build container locally you can run in project folder:
+
+To build container you need to have running Docker daemon locally, then you can run:
 ```
 ./build.sh
 ```
-Above command builds kubernetes-mesos binaries from source and places them into `./km` folder.
+Above command builds kubernetes-mesos binaries from source in docker container and places them into `./km` folder.
+Binaries are building only first time you run `./build.sh` in cloned repo. To re-build just run `./build.sh cleanup`
 Docker container name is `kubernetes-mesos`
 
 ## Running container

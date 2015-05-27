@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 
-REPO="docker.io/altvnk"
+if [[ "$1" != "" ]]; then
+    REPO="$1"
+else
+    REPO=""
+fi
+
 PROJECT_NAME="kubernetes-mesos"
 PROJECT_TAG=latest
 WORKSPACE=$PWD/km
@@ -22,4 +27,4 @@ ls ${WORKSPACE}
 # build docker image
 echo "Building kubernetes-mesos docker image"
 docker build -t ${REPO}/${PROJECT_NAME}:${PROJECT_TAG} .
-echo "Container image ${REPO}/${PROJECT_NAME}:${PROJECT_TAG} is built, you can run it or push to repo"
+echo "Docker image ${REPO}${PROJECT_NAME}:${PROJECT_TAG} is built, you can run it or push to the repo"

@@ -1,11 +1,6 @@
 #!/usr/bin/env bash
 
-if [[ "$1" != "" ]]; then
-    REPO="$1"
-else
-    REPO=""
-fi
-
+REPO="docker.io/altvnk/"
 PROJECT_NAME="kubernetes-mesos"
 PROJECT_TAG=latest
 WORKSPACE=$PWD/rootfs/opt/k8sm
@@ -17,7 +12,7 @@ cleanup() {
 
 if [[ ! -e ${WORKSPACE} ]]; then
 	echo "Binaries not found, let's build them"
-	mkdir ${WORKSPACE}
+	mkdir -p ${WORKSPACE}
 	docker run --rm -v ${WORKSPACE}:/target mesosphere/kubernetes-mesos:build
 fi
 
@@ -26,5 +21,5 @@ ls ${WORKSPACE}
 
 # build docker image
 echo "Building kubernetes-mesos docker image"
-docker build -t ${REPO}/${PROJECT_NAME}:${PROJECT_TAG} .
+docker build -t ${REPO}${PROJECT_NAME}:${PROJECT_TAG} .
 echo "Docker image ${REPO}${PROJECT_NAME}:${PROJECT_TAG} is built, you can run it or push to the repo"

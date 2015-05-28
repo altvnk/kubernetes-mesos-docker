@@ -4,7 +4,7 @@ MAINTAINER Oleksandr Lytvynenko <altvnk@me.com>
 
 RUN opkg-install curl bash
 
-ADD ./rootfs/* /
+COPY ./rootfs/ /
 
 EXPOSE 8888
 

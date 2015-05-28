@@ -8,4 +8,4 @@ export > /etc/envvars
 touch /etc/runit/stopit
 chmod 0 /etc/runit/stopit
 
-/bin/run-parts --verbose --exit-on-error /etc/runit/1.d
+/bin/run-parts --exit-on-error /etc/runit/1.d

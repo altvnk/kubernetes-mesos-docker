@@ -1,0 +1,5 @@
+#!/bin/sh
+echo "Starting km controller-manager"
+exec chpst -u nobody km controller-manager \
+  --master=${K8SM_IP}:${K8SM_PORT} \
+  --cloud_config=${K8SM_CONFIG}

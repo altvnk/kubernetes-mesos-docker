@@ -8,14 +8,14 @@ fi
 
 PROJECT_NAME="kubernetes-mesos"
 PROJECT_TAG=latest
-WORKSPACE=$PWD/km
+WORKSPACE=$PWD/rootfs/opt/k8sm
 
 cleanup() {
     rm -rf ${WORKSPACE}
     echo "Workspace deleted: $WORKSPACE"
 }
 
-if [[ ! -e ${WORKSPACE}/km ]]; then
+if [[ ! -e ${WORKSPACE} ]]; then
 	echo "Binaries not found, let's build them"
 	mkdir ${WORKSPACE}
 	docker run --rm -v ${WORKSPACE}:/target mesosphere/kubernetes-mesos:build

@@ -4,15 +4,8 @@ MAINTAINER Oleksandr Lytvynenko <altvnk@me.com>
 
 RUN opkg-install curl bash
 
-RUN mkdir /kubernetes-mesos
-WORKDIR /kubernetes-mesos
+ADD ./rootfs/* /
 
-COPY ./km/* /kubernetes-mesos/bin/
-COPY ./bin /kubernetes-mesos/bin
-COPY ./runit/* /usr/bin/
+EXPOSE 8888
 
-ENV PATH /kubernetes-mesos/bin:$PATH
-
-EXPOSE 4888
-
-ENTRYPOINT ["start.sh"]
+ENTRYPOINT ["runit"]

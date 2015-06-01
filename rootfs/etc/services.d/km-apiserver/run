@@ -1,6 +1,5 @@
 #!/usr/bin/with-contenv sh
 exec 2>&1
-
 km apiserver \
   --address=${K8SM_IP} \
   --etcd_servers=${ETCD_URL} \

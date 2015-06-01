@@ -1,0 +1,8 @@
+#!/usr/bin/with-contenv sh
+exec 2>&1
+km scheduler \
+  --mesos_master=${MESOS_MASTER} \
+  --address=${K8SM_IP} \
+  --etcd_servers=${ETCD_URL} \
+  --mesos_user=root \
+  --api_servers=${K8SM_IP}:${K8SM_PORT}

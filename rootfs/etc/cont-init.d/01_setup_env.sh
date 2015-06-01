@@ -4,7 +4,7 @@
 # MESOS_PORT - Port that mesos-master is accessible on (default 5050)
 # ETCD_IP - IP that etcd is accessible on
 # ETCD_PORT - Port that etcd is accessible on (default 4001)
-# LOG_DIR - Directory to write logs to (default /tmp/k8sm-logs)
+# LOG_DIR - Directory to write logs to (default /var/log/)
 
 set -e
 
@@ -30,10 +30,9 @@ if [ ! -f "$K8SM_CONFIG" ]; then
     " > ${K8SM_CONFIG}
 fi
 
-LOG_DIR=${LOG_DIR:-"/tmp/k8sm-logs"}
-#mkdir -p ${LOG_DIR}
+LOG_DIR=${LOG_DIR:-"/var/log/"}
 
-export PATH=$PATH:${K8SM_HOME}
+PATH=$PATH:${K8SM_HOME}
 
 printf ${K8SM_HOME} > /var/run/s6/container_environment/K8SM_HOME
 printf ${K8SM_IP} > /var/run/s6/container_environment/K8SM_IP

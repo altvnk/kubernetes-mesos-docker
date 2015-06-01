@@ -1,9 +1,10 @@
-#!/bin/sh
-echo "Starting km apiserver"
-exec chpst -u nobody km apiserver \
+#!/usr/bin/with-contenv sh
+exec 2>&1
+
+km apiserver \
   --address=${K8SM_IP} \
   --etcd_servers=${ETCD_URL} \
-  --portal_net=10.10.10.0/24 \
+  --portal_net=${K8SM_PORTAL} \
   --port=${K8SM_PORT} \
   --cloud_provider=mesos \
   --cloud_config=${K8SM_CONFIG}

@@ -2,22 +2,24 @@
 
 REPO="docker.io/altvnk/"
 PROJECT_NAME="kubernetes-mesos"
-PROJECT_TAG=latest
-WORKSPACE=$PWD/rootfs/opt/k8sm
+PROJECT_TAG=s6
+BINDIR=${PWD}/bin
+TARGET=${PWD}/rootfs/opt/k8sm
 
 cleanup() {
-    rm -rf ${WORKSPACE}
+    rm -rf ${TARGET} ${BINDIR}
     echo "Workspace deleted: $WORKSPACE"
 }
 
-if [[ ! -e ${WORKSPACE} ]]; then
+if [[ ! -e ${BINDIR}/km ]]; then
 	echo "Binaries not found, let's build them"
-	mkdir -p ${WORKSPACE}
-	docker run --rm -v ${WORKSPACE}:/target mesosphere/kubernetes-mesos:build
+	mkdir -p ${BINDIR}
+	docker run --rm -v ${BINDIR}:/target mesosphere/kubernetes-mesos:build
+	cp ${BINDIR}/km ${TARGET}/km
 fi
 
 echo "Binaries found:"
-ls ${WORKSPACE}
+ls ${TARGET}
 
 # build docker image
 echo "Building kubernetes-mesos docker image"

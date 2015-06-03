@@ -1,5 +1,5 @@
 #!/usr/bin/with-contenv sh
 exec 2>&1
 km controller-manager \
-  --master=${K8SM_IP}:${K8SM_PORT} \
-  --cloud_config=${K8SM_CONFIG}
+  --master=${K8SM_HOST}:${K8SM_PORT} \
+  --cloud_config=${K8SM_HOME}/mesos-cloud.conf

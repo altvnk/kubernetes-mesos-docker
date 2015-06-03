@@ -1,13 +1,6 @@
 FROM progrium/busybox
 MAINTAINER Oleksandr Lytvynenko <altvnk@me.com>
 
-# Set needed environment varibles
-# MESOS_IP - IP that mesos is accessible on
-# MESOS_PORT - Port that mesos-master is accessible on (default 5050)
-# ETCD_IP - IP that etcd is accessible on
-# ETCD_PORT - Port that etcd is accessible on (default 4001)
-# LOG_DIR - Directory to write logs to (default /var/log/)
-
 ENV K8SM_HOME /opt/k8sm
 ENV K8SM_PORT 8888
 ENV K8SM_PORTAL 10.10.10.0/24

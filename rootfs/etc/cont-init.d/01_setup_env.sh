@@ -6,8 +6,6 @@
 # ETCD_PORT - Port that etcd is accessible on (default 4001)
 # LOG_DIR - Directory to write logs to (default /var/log/)
 
-set -e
-
 K8SM_HOME=/opt/k8sm
 K8SM_IP=$(hostname -i)
 K8SM_PORT=8888

@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-REPO="docker.io/altvnk/"
 PROJECT_NAME="kubernetes-mesos"
 PROJECT_TAG=s6
 BINDIR=${PWD}/bin
@@ -19,7 +18,7 @@ if [[ ! -e ${BINDIR}/km ]]; then
 	echo "Binaries not found, let's build them"
 	mkdir -p ${BINDIR}
 	docker run --rm -v ${BINDIR}:/target mesosphere/kubernetes-mesos-build
-	cp ${BINDIR}/km ${TARGET}/km
+	cp ${BINDIR}/km ${TARGET}/
 fi
 
 # build docker image

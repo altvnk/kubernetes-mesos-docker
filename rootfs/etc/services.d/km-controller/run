@@ -5,5 +5,6 @@ K8SM_HOST=$(hostname -i)
 
 km controller-manager \
   --master=http://${K8SM_HOST}:${K8SM_PORT} \
-  --cloud-provider="mesos" \
-  --cloud-config=${K8SM_HOME}/mesos-cloud.conf
+  --cloud-provider=mesos \
+  --cloud-config=${K8SM_HOME}/mesos-cloud.conf \
+  --v=1

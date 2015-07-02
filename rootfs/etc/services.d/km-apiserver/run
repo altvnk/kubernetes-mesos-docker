@@ -4,6 +4,7 @@ km apiserver \
   --insecure-bind-address=0.0.0.0 \
   --insecure-port=${K8SM_PORT} \
   --etcd-servers=http://${ETCD_HOST}:${ETCD_PORT} \
-  --portal-net=${K8SM_PORTAL} \
+  --service-cluster-ip-range=${K8SM_PORTAL} \
   --cloud-provider=mesos \
-  --cloud-config=${K8SM_HOME}/mesos-cloud.conf
+  --cloud-config=${K8SM_HOME}/mesos-cloud.conf \
+  --v=1

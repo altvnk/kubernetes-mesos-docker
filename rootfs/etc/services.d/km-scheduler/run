@@ -7,4 +7,6 @@ km scheduler \
   --mesos-master=${MESOS_HOST}:${MESOS_PORT} \
   --address=${K8SM_HOST} \
   --etcd-servers=http://${ETCD_HOST}:${ETCD_PORT} \
-  --api-servers=${K8SM_HOST}:${K8SM_PORT}
+  --api-servers=${K8SM_HOST}:${K8SM_PORT} \
+  --mesos-user=root \
+  --v=2

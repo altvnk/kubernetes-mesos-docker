@@ -18,7 +18,7 @@ if [[ ! -e ${BINDIR}/km ]]; then
 	echo "Binaries not found, let's build them"
 	mkdir -p ${BINDIR}
 	docker run --rm -v ${BINDIR}:/target mesosphere/kubernetes-mesos-build
-	cp ${BINDIR}/* ${TARGET}/
+	cp ${BINDIR}/km ${TARGET}/
 fi
 
 # build docker image

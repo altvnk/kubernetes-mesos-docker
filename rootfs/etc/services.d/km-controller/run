@@ -1,6 +1,9 @@
 #!/usr/bin/with-contenv sh
 exec 2>&1
+
+K8SM_HOST=$(hostname -i)
+
 km controller-manager \
-  --master=${K8SM_HOST}:${K8SM_PORT} \
+  --master=http://${K8SM_HOST}:${K8SM_PORT} \
   --cloud-provider="mesos" \
   --cloud-config=${K8SM_HOME}/mesos-cloud.conf

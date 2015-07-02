@@ -1,9 +1,9 @@
 #!/usr/bin/with-contenv sh
 exec 2>&1
 km apiserver \
-  --address=$(hostname -i) \
-  --etcd_servers=http://${ETCD_HOST}:${ETCD_PORT} \
-  --portal_net=${K8SM_PORTAL} \
-  --port=${K8SM_PORT} \
-  --cloud_provider=mesos \
-  --cloud_config=${K8SM_HOME}/mesos-cloud.conf
+  --insecure-bind-address=0.0.0.0 \
+  --insecure-port=${K8SM_PORT} \
+  --etcd-servers=http://${ETCD_HOST}:${ETCD_PORT} \
+  --portal-net=${K8SM_PORTAL} \
+  --cloud-provider=mesos \
+  --cloud-config=${K8SM_HOME}/mesos-cloud.conf

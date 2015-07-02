@@ -1,54 +1,52 @@
 {
-            "constraints": [
-                [
-                    "hostname",
-                    "UNIQUE"
-                ]
-            ],
-            "container": {
-                "docker": {
-                    "forcePullImage": false,
-                    "image": "quay.io/coreos/etcd:latest",
-                    "network": "BRIDGE",
-                    "portMappings": [
-                        {
-                            "containerPort": 4001,
-                            "hostPort": 4001,
-                            "protocol": "tcp"
-                        }
-                    ],
-                    "privileged": false
-                },
-                "type": "DOCKER"
-            },
-            "cpus": 0.1,
-            "healthChecks": [
-                {
-                    "gracePeriodSeconds": 300,
-                    "ignoreHttp1xx": false,
-                    "intervalSeconds": 60,
-                    "maxConsecutiveFailures": 3,
-                    "path": "/health",
-                    "portIndex": 0,
-                    "protocol": "HTTP",
-                    "timeoutSeconds": 20
-                }
-            ],
-            "id": "/etcd",
-            "instances": 1,
-            "labels": {},
-            "maxLaunchDelaySeconds": 3600,
-            "mem": 512.0,
-            "ports": [
-                4001
-            ],
-	    "args": [
-        	"-name",
-        	"etcd0",
-        	"-advertise-client-urls",
-        	"http://etcd.service.consul:2379,http://etcd.service.consul:4001",
-        	"-listen-client-urls",
-        	"http://0.0.0.0:2379,http://0.0.0.0:4001"
-    	   ]
+  "id": "/etcd",
+  "instances": 1,
+  "labels": {},
+  "maxLaunchDelaySeconds": 60,
+  "cpus": 0.1,
+  "mem": 128.0,
+  "container": {
+    "type": "DOCKER",
+    "docker": {
+      "forcePullImage": false,
+      "image": "quay.io/coreos/etcd:latest",
+      "network": "BRIDGE",
+      "portMappings": [
+        {
+          "containerPort": 4001,
+          "hostPort": 4001,
+          "protocol": "tcp"
+        }
+      ]
+    }
+  },
+  "args": [
+    "-name",
+    "etcd0",
+    "-advertise-client-urls",
+    "http://etcd.service.consul:2379,http://etcd.service.consul:4001",
+    "-listen-client-urls",
+    "http://0.0.0.0:2379,http://0.0.0.0:4001"
+  ],
+  "ports": [
+    4001
+  ],
+  "constraints": [
+    [
+      "hostname",
+      "UNIQUE"
+    ]
+  ],
+  "healthChecks": [
+    {
+      "gracePeriodSeconds": 300,
+      "ignoreHttp1xx": false,
+      "intervalSeconds": 60,
+      "maxConsecutiveFailures": 3,
+      "path": "/health",
+      "portIndex": 0,
+      "protocol": "HTTP",
+      "timeoutSeconds": 20
+    }
+  ]
 }
-

@@ -24,6 +24,13 @@ Binaries are building only first time you run `./build.sh` in cloned repo.
 
 
 ### Daemon mode
+
+If you not have running `etcd` service you can run it in Marathon. Just put `etcd.json` into Marathon REST API:
+
+```
+curl -X POST -H "Content-Type: application/json" localhost:8080/v2/apps -d@etcd.json | python -m json.tool
+```
+
 To run container in daemon mode you must specify `etcd` node ip an other values if they are not default one. It can be done via environment variables.
 For example, if etcd is accessible via 10.11.12.13 you can run:
 ```

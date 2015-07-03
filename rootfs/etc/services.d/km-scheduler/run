@@ -4,7 +4,7 @@ exec 2>&1
 K8SM_HOST=$(hostname -i)
 
 ${K8SM_HOME:-/opt/k8sm}/km scheduler \
-  --mesos-master=${MESOS_HOST:-leader.mesos.service.consul}:${MESOS_PORT:5050} \
+  --mesos-master=${MESOS_HOST:-leader.mesos.service.consul}:${MESOS_PORT:-5050} \
   --address=${K8SM_HOST} \
   --etcd-servers=http://${ETCD_HOST:-etcd.service.consul}:${ETCD_PORT:-4001} \
   --api-servers=${K8SM_HOST}:${K8SM_PORT:-8888} \

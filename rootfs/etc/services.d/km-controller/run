@@ -3,8 +3,8 @@ exec 2>&1
 
 K8SM_HOST=$(hostname -i)
 
-km controller-manager \
-  --master=http://${K8SM_HOST}:${K8SM_PORT} \
+${K8SM_HOME:-/opt/k8sm}/km controller-manager \
+  --master=http://${K8SM_HOST}:${K8SM_PORT:-8888} \
   --cloud-provider=mesos \
-  --cloud-config=${K8SM_HOME}/mesos-cloud.conf \
+  --cloud-config=${K8SM_HOME:-/opt/k8sm}/mesos-cloud.conf \
   --v=1

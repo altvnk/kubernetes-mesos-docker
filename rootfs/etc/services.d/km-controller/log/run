@@ -1,4 +1,4 @@
 #!/usr/bin/with-contenv sh
 #Logs all of stdin, prepending every line with a TAI64N timestamp, into the /var/log/services/stuff logdir, with a maximum archive of #20 log files of 10 MB each; makes sure every line has been written before reading the next one.
 
-s6-log -b n20 s10000000 T ${LOG_DIR}/km-controller
+s6-log -b n20 s10000000 T ${LOG_DIR:-/var/log}/km-controller

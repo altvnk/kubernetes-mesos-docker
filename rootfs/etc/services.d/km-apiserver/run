@@ -1,10 +1,10 @@
 #!/usr/bin/with-contenv sh
 exec 2>&1
-km apiserver \
+${K8SM_HOME:-/opt/k8sm}/km apiserver \
   --insecure-bind-address=0.0.0.0 \
-  --insecure-port=${K8SM_PORT} \
-  --etcd-servers=http://${ETCD_HOST}:${ETCD_PORT} \
-  --service-cluster-ip-range=${K8SM_PORTAL} \
+  --insecure-port=${K8SM_PORT:-8888} \
+  --etcd-servers=http://${ETCD_HOST:-etcd.service.consul}:${ETCD_PORT:-4001} \
+  --service-cluster-ip-range=${K8SM_PORTAL:-10.254.0.0/24} \
   --cloud-provider=mesos \
-  --cloud-config=${K8SM_HOME}/mesos-cloud.conf \
+  --cloud-config=${K8SM_HOME:-/opt/k8sm}/mesos-cloud.conf \
   --v=1

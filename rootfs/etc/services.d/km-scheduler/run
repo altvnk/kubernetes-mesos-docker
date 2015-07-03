@@ -7,7 +7,7 @@ ${K8SM_HOME:-/opt/k8sm}/km scheduler \
   --mesos-master=${MESOS_HOST:-leader.mesos.service.consul}:${MESOS_PORT:-5050} \
   --address=${K8SM_HOST} \
   --etcd-servers=http://${ETCD_HOST:-etcd.service.consul}:${ETCD_PORT:-4001} \
-  --api-servers=${FRAMEWORK_ADDRESS:-k8sm.service.consul}:${K8SM_PORT:-8888} \
+  --api-servers=http://${FRAMEWORK_ADDRESS:-k8sm.service.consul}:${K8SM_PORT:-8888} \
   --advertised-address=${FRAMEWORK_ADDRESS:-k8sm.service.consul}:${K8SM_SHED_PORT:-10251} \
   --mesos-user=root \
   --v=2
